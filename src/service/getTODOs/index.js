@@ -1,7 +1,7 @@
 export const getTodos = [{
   id: 1,
     type: "Personal",
-    text: "Limpiar la casa",
+    text: "Limpiarr la casa",
     urgenty: false,
     completed: false
   },{

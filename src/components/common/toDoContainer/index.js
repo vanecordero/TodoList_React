@@ -1,45 +1,43 @@
 
 import { useEffect, useState } from 'react'
- import PropTypes from 'prop-types';
 // import { getTodos } from "service/getTODOs";
-// import { ToDoElement } from "../toDoList";
+ import { ToDoElement } from "../toDoList";
 
 function ToDoContainer ({ todoData }) {
   const [toDos, setToDos] = useState([])
 
-  useEffect(() => { 
-     
-    const orderToDos = orderListToDoByType(todoData)
+  useEffect(() => {      
+    const orderToDos = orderBy(todoData)
     setToDos(orderToDos)
   }, [todoData])
 
   // Order array of TODOs by type
-  const orderListToDoByType = (ele) => {
-    const newArra = []
-    ele.forEach(todo => {
-      (Object.prototype.hasOwnProperty.call(newArra, todo.type))
-        ? newArra[todo.type].push(todo)
-        : newArra[todo.type] = [todo]
-    })
-    return newArra
+  const orderBy = (ele) => {
+    return ele.reduce((r,a)=>{
+      r[a.type] = r[a.type] || [];
+      r[a.type].push(a);
+      return r;
+    }, Object.create(null))
   }
-  console.log(toDos)
 
-  return <>
+  return (
+  <>
   {
-    toDos.map(ToDo => { 
-      console.log(ToDo)
-      return (
-        <div key={ToDo.id}>a</div>
-      )
-    })
+    (toDos.length===0)? <p>Vacio</p> 
+    :  Object.keys(toDos).map((key) => (      
+      <div key={key}>
+        <span>{key}</span>
+        {
+          toDos[key].map(item=>(
+            <ToDoElement key={`${key}_item_${item.id}`} taks={item}/>
+          ))
+        }
+      </div>
+      ))
   }
 </>
+)
   
-}
-
-ToDoContainer.PropTypes ={
-  todoData: PropTypes.array
 }
 
 

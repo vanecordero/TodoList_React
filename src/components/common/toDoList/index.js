@@ -1,21 +1,16 @@
 import './toDoList.css';
 
-function ToDoElement ({ todoData }) {
-  console.log(todoData)
+function ToDoElement ({ taks }) {
 
-  return <>
-      {
-        todoData.map(data => {
-          return (
-         <div key={data.id}>
-          <span/>
-          <p>{data.text}</p>
-          <span/>
-        </div>
-          )
-        })
-      }
-    </>
+  return (
+  <>      
+    <div key={taks.id}>
+      <span/>
+        <p>{taks.text}</p>
+      <span/>
+    </div>
+  </>
+  )
 }
 
 
