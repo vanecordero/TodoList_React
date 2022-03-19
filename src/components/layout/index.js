@@ -1,18 +1,19 @@
-import { RoutesLinks } from '../routes/routesLinks';
-import { AddTaksButton } from '../common/addTaskButton'
-
+import { RoutesLinks } from "../routes/routesLinks";
+import { AddTaksButton } from "../common/addTaskButton";
+import { TodoContProv } from "context";
 function Layout() {
+  const addTaks = (e) => {
+    alert("aad");
+  };
 
-  const addTaks = (e)=>{
-  alert('aad')
-  }
-
-  return ( 
-  <>
-  <RoutesLinks/>
-  <AddTaksButton onClick={addTaks} />
-  </> 
+  return (
+    <>
+      <TodoContProv>
+        <RoutesLinks />
+        <AddTaksButton onClick={addTaks} />
+      </TodoContProv>
+    </>
   );
 }
 
-export {Layout};
+export { Layout };

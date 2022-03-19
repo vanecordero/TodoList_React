@@ -1,0 +1,27 @@
+
+.taks{
+    display: flex;
+    padding-top: 0.8rem;
+    
+}
+.taks__text{
+    margin: 0 5px;
+    flex-grow: 2;
+}
+.taks-completed .taks__completeBtn,
+.taks-completed .taks__text{
+    opacity: 0.5;
+    color: limegreen;
+    text-decoration: line-through;
+}
+
+.taks__completeBtn{
+    font-weight: bold;
+}
+.taks__EliminateBtn{
+   color: tomato;
+}
+.taks__completeBtn,
+.taks__EliminateBtn{
+    cursor: pointer;
+}

@@ -1,0 +1,21 @@
+.todo__div{
+    background-color: white;
+    border-radius: 0.2rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    position: relative;
+}
+.todo__div:nth-child(odd) .todo__div__type{
+    background-color: rgb(125, 172, 224);
+}
+.todo__div:nth-child(even) .todo__div__type{ 
+    background-color: rgb(143, 125, 224);
+}
+.todo__div__type{
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 0.2rem;
+    position: absolute;
+    top: -0.5rem;
+}
