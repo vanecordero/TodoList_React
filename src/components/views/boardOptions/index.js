@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from "react";
 
 function BoardOptions() {
   const { tasks } = useContext(TodoContProv);
-  console.log(tasks);
   const [dinamicLinks, setDinamicLinks] = useState([]);
 
   useEffect(() => {
@@ -17,20 +16,22 @@ function BoardOptions() {
   return (
     <>
       <h2>Menu</h2>
-      <ul>
-        <li>
-          <Link className="links" to={"/todos"}>
-            See all
-          </Link>
-        </li>
-        {dinamicLinks.map((link) => (
-          <li key={`link_${link}`}>
-            <Link className="links" to={`/todos/${link.toLowerCase()}`}>
-              {link}
+      <nav>
+        <ul>
+          <li>
+            <Link className="links" to={"/todos"}>
+              See all
             </Link>
           </li>
-        ))}
-      </ul>
+          {dinamicLinks.map((link) => (
+            <li key={`link_${link}`}>
+              <Link className="links" to={`/todos/${link.toLowerCase()}`}>
+                {link}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </>
   );
 }

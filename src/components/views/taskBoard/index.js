@@ -26,7 +26,7 @@ function TaskBoard() {
       setTodoList(tasks);
       setSearchedTodos(tasks);
     }
-  }, []);
+  }, [tasks]);
 
   const filterTodo = (event) => {
     if (!event.target.value >= 1) {
@@ -45,7 +45,7 @@ function TaskBoard() {
       <Link className="goBackLink" to={"/"}>
         ← Go to menu
       </Link>
-      <h2 className="title">My TODOs</h2>
+      <h2 className="title">My TO-DOs</h2>
       <CounterToDo taksForCount={todoList} />
 
       <SearchToDo onChange={filterTodo} />

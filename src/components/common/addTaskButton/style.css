@@ -1,10 +1,10 @@
 .addTask{
     position:sticky;   
+    width: min-content;
+    margin: auto;
+    padding: 1rem 0;
     right: 1rem;
     bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    padding: 1rem 0;
 }
 .addTask__button{
     width: 40px;

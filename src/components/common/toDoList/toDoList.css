@@ -11,7 +11,7 @@
 .taks-completed .taks__completeBtn,
 .taks-completed .taks__text{
     opacity: 0.5;
-    color: limegreen;
+    color: rgb(45, 180, 45);
     text-decoration: line-through;
 }
 

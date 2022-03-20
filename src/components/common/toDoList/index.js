@@ -1,6 +1,6 @@
 import "./toDoList.css";
 
-function ToDoElement({ taks, onComplete }) {
+function ToDoElement({ taks, onComplete, onDelete }) {
   return (
     <>
       <div
@@ -17,7 +17,14 @@ function ToDoElement({ taks, onComplete }) {
           ✓
         </span>
         <p className="taks__text">{taks.text}</p>
-        <span className="taks__EliminateBtn">x</span>
+        <span
+          data-id={taks.id}
+          data-type={taks.type}
+          onClick={onDelete}
+          className="taks__EliminateBtn"
+        >
+          x
+        </span>
       </div>
     </>
   );

@@ -6,10 +6,10 @@
     position: relative;
 }
 .todo__div:nth-child(odd) .todo__div__type{
-    background-color: rgb(125, 172, 224);
+    background-color: rgb(86, 129, 179);
 }
 .todo__div:nth-child(even) .todo__div__type{ 
-    background-color: rgb(143, 125, 224);
+    background-color: rgb(121, 105, 192);
 }
 .todo__div__type{
     color: white;

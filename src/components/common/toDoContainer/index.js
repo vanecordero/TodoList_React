@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from "react";
-// import { getTodos } from "service/getTODOs";
 import { ToDoElement } from "../toDoList";
 import "./style.css";
 import TodoContProv from "context";
@@ -13,7 +12,7 @@ function ToDoContainer({ todoData }) {
     setToDos(orderToDos);
   }, [todoData]);
 
-  // Order array of TODOs by type
+  // Order array of TO-DOs by type
   const orderBy = (ele, type) => {
     return ele.reduce((r, a) => {
       r[a[type]] = r[a[type]] || [];
@@ -22,15 +21,26 @@ function ToDoContainer({ todoData }) {
     }, Object.create(null));
   };
 
+  //mark completed the task
   const completeTask = (event) => {
-    let type = event.target.dataset.type;
-    let id = event.target.dataset.id;
-    let index = toDos[type].findIndex((elem) => elem.id == id);
-    let newObj = toDos[type];
-    newObj[index].completed = !newObj[index].completed;
-
-    setTasks({ ...toDos, [type]: newObj });
+    let id = tasks.findIndex((elem) => elem.id == event.target.dataset.id);
+    tasks[id]["completed"] = !tasks[id]["completed"];
+    actuliceTask();
   };
+
+  //Delete task
+  const deleteTask = (event) => {
+    tasks.splice(
+      tasks.findIndex((elem) => elem.id == event.target.dataset.id),
+      1
+    );
+    actuliceTask();
+  };
+
+  function actuliceTask() {
+    setTasks(tasks);
+    setToDos(orderBy(tasks, "type"));
+  }
 
   return (
     <>
@@ -45,6 +55,7 @@ function ToDoContainer({ todoData }) {
                 key={`${key}_item_${item.id}`}
                 taks={item}
                 onComplete={completeTask}
+                onDelete={deleteTask}
               />
             ))}
           </div>
