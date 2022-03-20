@@ -7,9 +7,6 @@ function BoardOptions() {
   console.log(tasks);
   const [dinamicLinks, setDinamicLinks] = useState([]);
 
-  console.log("links");
-  console.log(dinamicLinks);
-
   useEffect(() => {
     let links = tasks.map(({ type }) => type);
     setDinamicLinks(
@@ -27,7 +24,7 @@ function BoardOptions() {
           </Link>
         </li>
         {dinamicLinks.map((link) => (
-          <li>
+          <li key={`link_${link}`}>
             <Link className="links" to={`/todos/${link.toLowerCase()}`}>
               {link}
             </Link>

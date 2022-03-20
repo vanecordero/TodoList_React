@@ -10,14 +10,14 @@ export const getTodos = [
     id: 2,
     type: "Trabajo",
     text: "Crear, gestionar y llevar los diferentes expedientes de los empleados.",
-    urgenty: false,
+    urgenty: true,
     completed: false,
   },
   {
     id: 3,
     type: "Estudios",
     text: "Estudiar para el examen",
-    urgenty: false,
+    urgenty: true,
     completed: false,
   },
   {

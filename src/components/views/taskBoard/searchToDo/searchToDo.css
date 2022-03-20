@@ -1,0 +1,10 @@
+
+.search__label{
+    margin-right: 0.8rem;
+    font-size: 0.9rem;
+}
+.search__input{
+    padding: 0.3rem;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 4px;
+}

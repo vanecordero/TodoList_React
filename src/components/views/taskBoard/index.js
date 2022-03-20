@@ -1,20 +1,32 @@
 import { ToDoContainer } from "components/common/toDoContainer";
-//import { getTodos } from "service/getTODOs";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TodoContProv from "context";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./style.css";
+import { CounterToDo } from "components/common/counterToDo";
+import { SearchToDo } from "./searchToDo";
 
 function TaskBoard() {
-  const { tasks, setTasks } = useContext(TodoContProv);
-  const [todoList] = useState(tasks);
-  const [searchedTodos, setSearchedTodos] = useState(tasks);
+  const { tasks } = useContext(TodoContProv);
 
+  const [todoList, setTodoList] = useState([]);
+  const [searchedTodos, setSearchedTodos] = useState([]);
   let params = useParams();
-  if (Object.keys(params).length === 0) {
-    console.log("empty");
-  }
-  console.log(params);
-  console.log(tasks);
+
+  //show taks denpends of url parameter
+  useEffect(() => {
+    if (Object.keys(params).length > 0) {
+      let values = tasks.filter(
+        (task) => task.type.toLowerCase() === params.type
+      );
+      setTodoList(values);
+      setSearchedTodos(values);
+    } else {
+      setTodoList(tasks);
+      setSearchedTodos(tasks);
+    }
+  }, []);
 
   const filterTodo = (event) => {
     if (!event.target.value >= 1) {
@@ -22,22 +34,21 @@ function TaskBoard() {
     } else {
       setSearchedTodos(
         todoList.filter((elem) =>
-          elem["text"].includes(event.target.value.toLowerCase())
+          elem["text"].toLowerCase().includes(event.target.value.toLowerCase())
         )
       );
     }
   };
 
-  const completedToDos = todoList.filter((elem) => !!elem.completed).length;
-  const totalTodos = todoList.length;
-
   return (
     <>
-      <h2>My TODOs</h2>
-      <h4>
-        {completedToDos} of {totalTodos} completed.
-      </h4>
-      <input type="text" onChange={filterTodo} />
+      <Link className="goBackLink" to={"/"}>
+        ← Go to menu
+      </Link>
+      <h2 className="title">My TODOs</h2>
+      <CounterToDo taksForCount={todoList} />
+
+      <SearchToDo onChange={filterTodo} />
 
       <ToDoContainer todoData={searchedTodos} />
     </>

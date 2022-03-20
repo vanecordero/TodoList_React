@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 // import { getTodos } from "service/getTODOs";
 import { ToDoElement } from "../toDoList";
 import "./style.css";
+import TodoContProv from "context";
 
 function ToDoContainer({ todoData }) {
   const [toDos, setToDos] = useState([]);
+  const { tasks, setTasks } = useContext(TodoContProv);
 
   useEffect(() => {
     const orderToDos = orderBy(todoData, "type");
@@ -27,7 +29,7 @@ function ToDoContainer({ todoData }) {
     let newObj = toDos[type];
     newObj[index].completed = !newObj[index].completed;
 
-    setToDos({ ...toDos, [type]: newObj });
+    setTasks({ ...toDos, [type]: newObj });
   };
 
   return (
