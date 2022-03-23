@@ -25,7 +25,7 @@ function TodoList({ todoData }) {
   const completeTask = (event) => {
     let id = tasks.findIndex((elem) => elem.id == event.target.dataset.id);
     tasks[id]["completed"] = !tasks[id]["completed"];
-    actuliceTask();
+    UpdateTodos();
   };
 
   //Delete task
@@ -34,10 +34,10 @@ function TodoList({ todoData }) {
       tasks.findIndex((elem) => elem.id == event.target.dataset.id),
       1
     );
-    actuliceTask();
+    UpdateTodos();
   };
 
-  function actuliceTask() {
+  function UpdateTodos() {
     setTasks(tasks);
     setToDos(orderBy(tasks, "type"));
   }

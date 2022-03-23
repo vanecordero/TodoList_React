@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import TodoContProv from "context";
 import { useContext, useEffect, useState } from "react";
+import useLocalStorage from "hooks/useLocalStorage";
 
 function BoardOptions() {
+  const [item, saveItem] = useLocalStorage('TODOS_V2', []);
   const { tasks } = useContext(TodoContProv);
   const [dinamicLinks, setDinamicLinks] = useState([]);
 
@@ -37,3 +39,12 @@ function BoardOptions() {
 }
 
 export { BoardOptions };
+
+
+/*
+
+ {toDos.length === 0 && <p>Vacio</p>} 
+      {loading && <p>Cargando... </p>}
+      {!loading && }
+
+*/
