@@ -1,33 +1,68 @@
-import "./toDoList.css";
+import { useEffect, useState, useContext } from "react";
+import { ToDoItem } from "../toDoItem";
+import "./style.css";
+import TodoContProv from "context";
 
-function ToDoElement({ taks, onComplete, onDelete }) {
+function TodoList({ todoData }) {
+  const [toDos, setToDos] = useState([]);
+  const { tasks, setTasks } = useContext(TodoContProv);
+
+  useEffect(() => {
+    const orderToDos = orderBy(todoData, "type");
+    setToDos(orderToDos);
+  }, [todoData]);
+
+  // Order array of TO-DOs by type
+  const orderBy = (ele, type) => {
+    return ele.reduce((r, a) => {
+      r[a[type]] = r[a[type]] || [];
+      r[a[type]].push(a);
+      return r;
+    }, Object.create(null));
+  };
+
+  //mark completed the task
+  const completeTask = (event) => {
+    let id = tasks.findIndex((elem) => elem.id == event.target.dataset.id);
+    tasks[id]["completed"] = !tasks[id]["completed"];
+    actuliceTask();
+  };
+
+  //Delete task
+  const deleteTask = (event) => {
+    tasks.splice(
+      tasks.findIndex((elem) => elem.id == event.target.dataset.id),
+      1
+    );
+    actuliceTask();
+  };
+
+  function actuliceTask() {
+    setTasks(tasks);
+    setToDos(orderBy(tasks, "type"));
+  }
+
   return (
     <>
-      <div
-        className={`taks ${taks.completed ? "taks-completed" : ""}`}
-        key={taks.id}
-      >
-        <span
-          onClick={onComplete}
-          data-task={taks.text}
-          data-id={taks.id}
-          data-type={taks.type}
-          className="taks__completeBtn"
-        >
-          ✓
-        </span>
-        <p className="taks__text">{taks.text}</p>
-        <span
-          data-id={taks.id}
-          data-type={taks.type}
-          onClick={onDelete}
-          className="taks__EliminateBtn"
-        >
-          x
-        </span>
-      </div>
+      {toDos.length === 0 ? (
+        <p>Vacio</p>
+      ) : (
+        Object.keys(toDos).map((key) => (
+          <div className="todo__div" key={key}>
+            <span className="todo__div__type">{key}</span>
+            {toDos[key].map((item) => (
+              <ToDoItem
+                key={`${key}_item_${item.id}`}
+                taks={item}
+                onComplete={completeTask}
+                onDelete={deleteTask}
+              />
+            ))}
+          </div>
+        ))
+      )}
     </>
   );
 }
 
-export { ToDoElement };
+export { TodoList };

@@ -1,11 +1,11 @@
-import { ToDoContainer } from "components/common/toDoContainer";
 import { useContext, useEffect, useState } from "react";
-import TodoContProv from "context";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./style.css";
+import TodoContProv from "context";
+import { TodoList } from "components/common/toDoList";
 import { CounterToDo } from "components/common/counterToDo";
 import { SearchToDo } from "./searchToDo";
+import "./style.css";
 
 function TaskBoard() {
   const { tasks } = useContext(TodoContProv);
@@ -28,7 +28,7 @@ function TaskBoard() {
     }
   }, [tasks]);
 
-  const filterTodo = (event) => {
+  const searchTodo = (event) => {
     if (!event.target.value >= 1) {
       setSearchedTodos(todoList);
     } else {
@@ -47,10 +47,8 @@ function TaskBoard() {
       </Link>
       <h2 className="title">My TO-DOs</h2>
       <CounterToDo taksForCount={todoList} />
-
-      <SearchToDo onChange={filterTodo} />
-
-      <ToDoContainer todoData={searchedTodos} />
+      <SearchToDo onChange={searchTodo} />
+      <TodoList todoData={searchedTodos} />
     </>
   );
 }

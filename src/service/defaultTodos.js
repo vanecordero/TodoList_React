@@ -1,4 +1,4 @@
-export const getTodos = [
+export const defaultTodos = [
   {
     id: 1,
     type: "Personal",

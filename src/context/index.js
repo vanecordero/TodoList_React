@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { getTodos } from "../service/getTODOs";
+import { defaultTodos } from "../service/defaultTodos";
 
 const Context = React.createContext({});
 
 export function TodoContProv({ children }) {
-  const [tasks, setTasks] = useState(getTodos);
+  const [tasks, setTasks] = useState(defaultTodos);
   return (
     <Context.Provider value={{ tasks, setTasks }}>{children}</Context.Provider>
   );
