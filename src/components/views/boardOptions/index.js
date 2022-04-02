@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import TodoContProv from "context";
 import { useContext, useEffect, useState } from "react";
+import "./style.css";
 
 function BoardOptions() {
   const { tasks } = useContext(TodoContProv);
@@ -16,18 +17,14 @@ function BoardOptions() {
   return (
     <>
       <h2>Menu</h2>
-      <nav>
+      <nav className="menu">
         <ul>
-          <li>
-            <Link className="links" to={"/todos"}>
-              See all
-            </Link>
+          <li className="link--SeeAll">
+            <Link to={"/todos"}>See all</Link>
           </li>
           {dinamicLinks.map((link) => (
-            <li key={`link_${link}`}>
-              <Link className="links" to={`/todos/${link.toLowerCase()}`}>
-                {link}
-              </Link>
+            <li key={`link_${link}`} className={`link--${link}`}>
+              <Link to={`/todos/${link.toLowerCase()}`}>{link}</Link>
             </li>
           ))}
         </ul>

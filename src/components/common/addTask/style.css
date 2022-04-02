@@ -1,0 +1,192 @@
+/*Add Todo Button */
+.addTask{
+    position:sticky;   
+    width: min-content;
+    margin: auto;
+    padding: 1rem 0;
+    right: 1rem;
+    bottom: 1rem;
+    /* margin-top: 300px; */
+}
+.addTask__button{
+    width: 40px;
+    height: 40px;
+    background-color:mediumorchid;
+    border: none;    
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 1.54rem;
+}
+
+.addTask__button:hover{
+    cursor: pointer;
+    background-color: rgb(145, 50, 235);
+}
+.addTask__button:active,
+.addTask__button:focus{
+    cursor: pointer;
+    background-color: rgb(118, 36, 194);
+}
+
+/* Modal */
+.modal{
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0; 
+    height: 100vh;  
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal >div{
+    background-color: #fff;
+    height: fit-content;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+
+/* FORM */
+.modal_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #c0c0c0;
+
+}
+.modal_header h4{
+    margin: 5px 0;
+}
+.modal_header button{
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0.6;
+}
+.modal_header button:hover,
+.modal_header button:focus{
+    opacity: 1;
+    cursor: pointer;
+}
+.modal_body{    
+	padding-bottom: 0.5rem;
+}
+.modal_body > p{    
+    margin: 15px 0 0 0;
+}
+.modal_body form > div:first-child,
+.modal_body form > div:nth-child(2){    
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+.modal_body form > div select{ 
+    padding: 5px 0;   
+}
+/* Switch radio button*/
+.switch-field {
+	display: flex;
+	overflow: hidden;
+}
+.switch-field input {
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+}
+
+.switch-field label {
+	background-color: #eeeeee;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 0.8rem;
+	line-height: 1;
+	text-align: center;
+	padding: 0.2rem 0.7rem;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.144);
+	transition: all 0.1s ease-in-out;
+    font-weight: bold;
+}
+.switch-field label:hover {
+	cursor: pointer;
+}
+.switch-field input:checked + label {
+	background-color: #a6fd74;
+	box-shadow: none;
+    color: #303030;
+}
+.switch-field label:first-of-type {
+	border-radius: 1rem 0 0 1rem;
+}
+.switch-field label:last-of-type {
+	border-radius: 0 1rem 1rem 0;
+}
+/****************/
+.form_buttons{
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+    border-top: 1px solid #c0c0c0;
+
+}
+.form_buttons button{
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* SUBMIT BUTTOM*/
+.form_buttons button[type = "submit"]{
+    position: relative;
+    transition-duration: 0.4s;
+    background-color: #6255cd;
+    margin-left: 5px;
+    color: #fff;
+    border: 1px solid #4f43a7 ;
+    overflow: hidden;
+}
+.form_buttons  button[type = "submit"]:hover,
+.form_buttons button[type = "button"]:hover{    
+  cursor: pointer;
+}
+.form_buttons button[type = "submit"]::after{
+ content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+.form_buttons button[type = "submit"]:active:after{
+    padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+/* Cancel button*/
+.form_buttons button[type = "button"]{
+    background-color: #c9c9ce;
+    border: 1px solid #b7b5c5 ;
+}
+
+.form_buttons button[type = "button"]:hover{
+    background-color: #c9c9ce;
+}
+.form_buttons button[type = "button"]:focus{
+    background-color: #acacac;
+}
